@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'screens/LogIn.dart';
-import 'screens/RoleScreen.dart';
-import 'screens/ForgotPassword.dart';
-import 'screens/StudentRequestScreen.dart';
-import 'screens/MentorHomeScreen.dart';
-import 'screens/ChatScreen.dart';
-import 'screens/AdminScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+import 'App.dart'; // This imports your StudyLinkApp class
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const StudyLinkApp());
 }

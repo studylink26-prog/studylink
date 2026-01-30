@@ -6,6 +6,8 @@ class AuthResult {
 }
 
 class AuthService {
+  get _auth => null;
+
   // Mock login function
   static Future<AuthResult> login(String email, String password) async {
     await Future.delayed(const Duration(seconds: 1)); // simulate API call
@@ -37,6 +39,13 @@ class AuthService {
       return AuthResult(success: true, message: 'Registration successful');
     } else {
       return AuthResult(success: false, message: 'All fields are required');
+    }
+  }
+  Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e) {
+      print("Error signing out: $e");
     }
   }
 }
